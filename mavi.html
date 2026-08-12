@@ -1,0 +1,2323 @@
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NovaShop — Modern E-Ticaret</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+    --bg:#f6f8fc;
+    --card:#ffffff;
+    --text:#2d8233;
+    --muted:#6b7280;
+    --border:#e5e7eb;
+    --dark:#0f172a;
+    --success:#16a34a;
+    --danger:#ef4444;
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    transition:.3s;
+}
+
+body.dark{
+    --bg:#0b1120;
+    --card:#111827;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --border:#325899;
+}
+
+/* ================= HEAD ER ================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.9);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid var(--border);
+}
+
+.dark header{
+    background:rgba(15,23,42,.9);
+}
+
+.navbar{
+    max-width:1250px;
+    margin:auto;
+    min-height:75px;
+    padding:0 20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    color:var(--primary);
+    white-space:nowrap;
+}
+
+.logo span{
+    color:var(--text);
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:var(--text);
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:var(--primary);
+}
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.nav-btn{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    cursor:pointer;
+    font-size:17px;
+    position:relative;
+}
+
+.badge{
+    position:absolute;
+    right:-4px;
+    top:-5px;
+
+    background:var(--danger);
+    color:white;
+
+    width:20px;
+    height:20px;
+
+    border-radius:50%;
+
+    font-size:11px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    max-width:1250px;
+    margin:30px auto;
+    padding:70px 55px;
+
+    border-radius:30px;
+
+    background:
+        radial-gradient(circle at 80% 20%,rgba(255,255,255,.25),transparent 30%),
+        linear-gradient(135deg,#1d4ed8,#7c3aed);
+
+    color:white;
+
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    align-items:center;
+
+    overflow:hidden;
+}
+
+.hero h1{
+    font-size:56px;
+    line-height:1.05;
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:580px;
+    font-size:18px;
+    line-height:1.7;
+    opacity:.9;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:12px;
+}
+
+.primary-btn,
+.secondary-btn{
+    border:none;
+    border-radius:12px;
+    padding:14px 22px;
+    cursor:pointer;
+    font-weight:800;
+}
+
+.primary-btn{
+    background:white;
+    color:#1d4fd6;
+}
+
+.secondary-btn{
+    background:rgba(255,255,255,.15);
+    color:white;
+    border:1px solid rgba(255,255,255,.3);
+}
+
+.hero-visual{
+    text-align:center;
+    font-size:170px;
+    filter:drop-shadow(0 30px 30px rgba(0,0,0,.25));
+}
+
+/* ================= STATS ================= */
+
+.stats{
+    max-width:1250px;
+    margin:25px auto;
+    padding:0 20px;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.stat{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:22px;
+    text-align:center;
+    box-shadow:var(--shadow);
+}
+
+.stat strong{
+    display:block;
+    font-size:25px;
+    margin-bottom:5px;
+}
+
+.stat span{
+    color:var(--muted);
+    font-size:13px;
+}
+
+/* ================= SECTION ================= */
+
+.section{
+    max-width:1250px;
+    margin:65px auto;
+    padding:0 20px;
+}
+
+.section-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:25px;
+}
+
+.section-heading h2{
+    font-size:30px;
+}
+
+.section-heading p{
+    color:var(--muted);
+    margin-top:5px;
+}
+
+/* ================= CATEGORIES ================= */
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:15px;
+}
+
+.category{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:25px 10px;
+    text-align:center;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.category:hover{
+    transform:translateY(-5px);
+    border-color:var(--primary);
+}
+
+.category-icon{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.category span{
+    font-weight:700;
+}
+
+/* ================= TOOLBAR ================= */
+
+.toolbar{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.search{
+    flex:1;
+    position:relative;
+}
+
+.search input{
+    width:100%;
+    height:48px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    padding:0 18px;
+    outline:none;
+}
+
+.sort{
+    height:48px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:0 15px;
+    background:var(--card);
+    color:var(--text);
+}
+
+/* ================= PRODUCTS ================= */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.product{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    overflow:hidden;
+    transition:.3s;
+    position:relative;
+}
+
+.product:hover{
+    transform:translateY(-7px);
+    box-shadow:var(--shadow);
+}
+
+.product-image{
+    height:230px;
+    background:linear-gradient(135deg,#eff6ff,#eef2ff);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:100px;
+    cursor:pointer;
+    position:relative;
+}
+
+.product-badge{
+    position:absolute;
+    left:12px;
+    top:12px;
+
+    background:var(--danger);
+    color:white;
+
+    padding:6px 9px;
+    border-radius:7px;
+
+    font-size:11px;
+    font-weight:bold;
+}
+
+.favorite{
+    position:absolute;
+    right:12px;
+    top:12px;
+
+    width:38px;
+    height:38px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(255,255,255,.9);
+    cursor:pointer;
+
+    font-size:18px;
+}
+
+.favorite.active{
+    color:#ef4444;
+}
+
+.product-info{
+    padding:18px;
+}
+
+.product-info h3{
+    font-size:17px;
+    margin-bottom:8px;
+}
+
+.rating{
+    color:#f59e0b;
+    font-size:13px;
+    margin-bottom:12px;
+}
+
+.price-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.price{
+    font-size:21px;
+    font-weight:900;
+}
+
+.old-price{
+    color:var(--muted);
+    text-decoration:line-through;
+    font-size:13px;
+}
+
+.add{
+    width:100%;
+    margin-top:15px;
+    padding:12px;
+
+    border:none;
+    border-radius:10px;
+
+    background:var(--primary);
+    color:white;
+
+    cursor:pointer;
+    font-weight:800;
+}
+
+.add:hover{
+    background:var(--primary-dark);
+}
+
+/* ================= SALE ================= */
+
+.sale{
+    max-width:1250px;
+    margin:60px auto;
+    padding:35px;
+
+    border-radius:25px;
+
+    background:var(--dark);
+    color:white;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.sale h2{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.sale p{
+    color:#cbd5e1;
+}
+
+.countdown{
+    display:flex;
+    gap:10px;
+}
+
+.time-box{
+    min-width:70px;
+    text-align:center;
+    background:#1e293b;
+    padding:12px;
+    border-radius:10px;
+}
+
+.time-box strong{
+    display:block;
+    font-size:22px;
+}
+
+/* ================= NEWSLETTER ================= */
+
+.newsletter{
+    max-width:900px;
+    margin:70px auto;
+    padding:45px 25px;
+    text-align:center;
+}
+
+.newsletter h2{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.newsletter p{
+    color:var(--muted);
+    margin-bottom:20px;
+}
+
+.newsletter-form{
+    display:flex;
+    max-width:600px;
+    margin:auto;
+    gap:10px;
+}
+
+.newsletter-form input{
+    flex:1;
+    height:48px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:0 15px;
+    background:var(--card);
+    color:var(--text);
+}
+
+.newsletter-form button{
+    background:var(--primary);
+    color:white;
+    border:none;
+    border-radius:10px;
+    padding:0 20px;
+}
+
+/* ================= CART ================= */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    z-index:1500;
+    display:none;
+}
+
+.overlay.show{
+    display:block;
+}
+
+.cart{
+    position:fixed;
+    right:-450px;
+    top:0;
+
+    width:430px;
+    max-width:100%;
+    height:100vh;
+
+    background:var(--card);
+    color:var(--text);
+
+    z-index:2000;
+
+    padding:25px;
+
+    transition:.35s;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.cart.open{
+    right:0;
+}
+
+.cart-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding-bottom:20px;
+    border-bottom:1px solid var(--border);
+}
+
+.close{
+    border:none;
+    background:none;
+    color:var(--text);
+    font-size:25px;
+    cursor:pointer;
+}
+
+.cart-items{
+    flex:1;
+    overflow-y:auto;
+    padding-top:20px;
+}
+
+.cart-item{
+    display:flex;
+    gap:12px;
+    padding:15px 0;
+    border-bottom:1px solid var(--border);
+}
+
+.cart-icon{
+    width:65px;
+    height:65px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    background:#eff6ff;
+    font-size:35px;
+}
+
+.cart-info{
+    flex:1;
+}
+
+.cart-info h4{
+    margin-bottom:6px;
+}
+
+.cart-price{
+    font-weight:800;
+}
+
+.qty{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    margin-top:8px;
+}
+
+.qty button{
+    width:26px;
+    height:26px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.remove{
+    margin-left:auto;
+    border:none;
+    background:none;
+    color:var(--danger);
+    cursor:pointer;
+}
+
+.cart-bottom{
+    border-top:1px solid var(--border);
+    padding-top:20px;
+}
+
+.coupon{
+    display:flex;
+    gap:8px;
+    margin-bottom:15px;
+}
+
+.coupon input{
+    flex:1;
+    height:42px;
+    padding:0 10px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    background:var(--card);
+    color:var(--text);
+}
+
+.coupon button{
+    background:#7c3aed;
+    color:white;
+    border:none;
+    padding:0 15px;
+    border-radius:8px;
+}
+
+.total{
+    display:flex;
+    justify-content:space-between;
+    font-size:22px;
+    font-weight:900;
+}
+
+.checkout{
+    width:100%;
+    margin-top:15px;
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:var(--success);
+    color:white;
+    font-weight:800;
+    cursor:pointer;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.65);
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    z-index:3000;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    max-width:550px;
+    width:100%;
+
+    background:var(--card);
+    color:var(--text);
+
+    border-radius:25px;
+    padding:30px;
+
+    position:relative;
+}
+
+.modal-image{
+    height:250px;
+
+    background:#eff6ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:120px;
+
+    border-radius:18px;
+
+    margin-bottom:20px;
+}
+
+.modal-box h2{
+    margin-bottom:10px;
+}
+
+.modal-box p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+.modal-price{
+    font-size:25px;
+    font-weight:900;
+    margin:20px 0;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+
+    background:#111827;
+    color:white;
+
+    padding:15px 20px;
+
+    border-radius:12px;
+
+    transform:translateY(100px);
+    opacity:0;
+
+    transition:.3s;
+
+    z-index:5000;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#0f172a;
+    color:white;
+    padding:60px 20px 25px;
+}
+
+.footer-grid{
+    max-width:1250px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer-grid h3{
+    margin-bottom:15px;
+}
+
+.footer-grid p{
+    color:#94a3b8;
+    line-height:1.8;
+}
+
+.footer-bottom{
+    max-width:1250px;
+    margin:40px auto 0;
+    padding-top:20px;
+
+    border-top:1px solid #243044;
+
+    text-align:center;
+
+    color:#64748b;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1000px){
+
+    .products{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .categories{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .hero h1{
+        font-size:43px;
+    }
+
+}
+
+@media(max-width:750px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+        margin:15px;
+        padding:45px 25px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero-visual{
+        display:none;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .sale{
+        margin:40px 15px;
+        flex-direction:column;
+        gap:25px;
+        text-align:center;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .toolbar{
+        flex-direction:column;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .newsletter-form{
+        flex-direction:column;
+    }
+
+    .newsletter-form button{
+        height:45px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .countdown{
+        transform:scale(.85);
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<nav class="navbar">
+
+    <div class="logo">
+        Nova<span>Shop</span>
+    </div>
+
+    <ul class="nav-links">
+
+        <li><a href="#">Ana Sayfa</a></li>
+        <li><a href="#categories">Kategoriler</a></li>
+        <li><a href="#products">Ürünler</a></li>
+        <li><a href="#campaign">Kampanyalar</a></li>
+        <li><a href="#contact">İletişim</a></li>
+
+    </ul>
+
+    <div class="nav-actions">
+
+        <button class="nav-btn" onclick="toggleDark()">
+            🌙
+        </button>
+
+        <button class="nav-btn" onclick="openCart()">
+
+            🛒
+
+            <span
+                class="badge"
+                id="cartCount"
+            >0</span>
+
+        </button>
+
+    </div>
+
+</nav>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div>
+
+        <p style="font-weight:800;">
+            ⚡ YAZ KAMPANYASI
+        </p>
+
+        <h1>
+            Teknolojiyi<br>
+            keşfet.
+        </h1>
+
+        <p>
+            Yeni nesil teknoloji ürünlerini
+            uygun fiyatlarla keşfet.
+            Hızlı kargo ve güvenli alışveriş.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button
+                class="primary-btn"
+                onclick="scrollProducts()"
+            >
+                Alışverişe Başla →
+            </button>
+
+            <button
+                class="secondary-btn"
+                onclick="showToast('Kampanyalar yakında!')"
+            >
+                Kampanyalar
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="hero-visual">
+        💻
+    </div>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<section class="stats">
+
+    <div class="stat">
+        <strong>50K+</strong>
+        <span>Mutlu Müşteri</span>
+    </div>
+
+    <div class="stat">
+        <strong>1.2K+</strong>
+        <span>Ürün</span>
+    </div>
+
+    <div class="stat">
+        <strong>24/7</strong>
+        <span>Destek</span>
+    </div>
+
+    <div class="stat">
+        <strong>4.9/5</strong>
+        <span>Müşteri Puanı</span>
+    </div>
+
+</section>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<section
+    class="section"
+    id="categories"
+>
+
+    <div class="section-heading">
+
+        <div>
+            <h2>Kategoriler</h2>
+            <p>İhtiyacın olan ürünü kolayca bul.</p>
+        </div>
+
+    </div>
+
+    <div class="categories">
+
+        <div
+            class="category"
+            onclick="categoryFilter('all')"
+        >
+            <div class="category-icon">🛍️</div>
+            <span>Tümü</span>
+        </div>
+
+        <div
+            class="category"
+            onclick="categoryFilter('computer')"
+        >
+            <div class="category-icon">💻</div>
+            <span>Bilgisayar</span>
+        </div>
+
+        <div
+            class="category"
+            onclick="categoryFilter('phone')"
+        >
+            <div class="category-icon">📱</div>
+            <span>Telefon</span>
+        </div>
+
+        <div
+            class="category"
+            onclick="categoryFilter('audio')"
+        >
+            <div class="category-icon">🎧</div>
+            <span>Ses</span>
+        </div>
+
+        <div
+            class="category"
+            onclick="categoryFilter('watch')"
+        >
+            <div class="category-icon">⌚</div>
+            <span>Saat</span>
+        </div>
+
+        <div
+            class="category"
+            onclick="categoryFilter('gaming')"
+        >
+            <div class="category-icon">🎮</div>
+            <span>Gaming</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section
+    class="section"
+    id="products"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <h2>Öne Çıkan Ürünler</h2>
+
+            <p>
+                Senin için seçtiğimiz ürünler.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="toolbar">
+
+        <div class="search">
+
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="🔎 Ürün ara..."
+                oninput="searchProducts()"
+            >
+
+        </div>
+
+        <select
+            class="sort"
+            id="sortSelect"
+            onchange="sortProducts()"
+        >
+
+            <option value="default">
+                Sıralama
+            </option>
+
+            <option value="low">
+                Fiyat: düşük → yüksek
+            </option>
+
+            <option value="high">
+                Fiyat: yüksek → düşük
+            </option>
+
+            <option value="name">
+                İsme göre
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div
+        class="products"
+        id="productList"
+    ></div>
+
+</section>
+
+
+<!-- ================= SALE ================= -->
+
+<section
+    class="sale"
+    id="campaign"
+>
+
+    <div>
+
+        <h2>🔥 Büyük Yaz İndirimi</h2>
+
+        <p>
+            Seçili ürünlerde %30'a varan indirim.
+        </p>
+
+    </div>
+
+    <div class="countdown">
+
+        <div class="time-box">
+            <strong id="days">05</strong>
+            <span>Gün</span>
+        </div>
+
+        <div class="time-box">
+            <strong id="hours">12</strong>
+            <span>Saat</span>
+        </div>
+
+        <div class="time-box">
+            <strong id="minutes">35</strong>
+            <span>Dk</span>
+        </div>
+
+        <div class="time-box">
+            <strong id="seconds">20</strong>
+            <span>Sn</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= NEWSLETTER ================= -->
+
+<section class="newsletter">
+
+    <h2>📧 Fırsatları kaçırma</h2>
+
+    <p>
+        Kampanyalardan ve yeni ürünlerden
+        ilk sen haberdar ol.
+    </p>
+
+    <div class="newsletter-form">
+
+        <input
+            type="email"
+            placeholder="E-posta adresin"
+        >
+
+        <button
+            onclick="subscribe()"
+        >
+            Abone Ol
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="contact">
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h3>NovaShop</h3>
+
+            <p>
+                Modern ve güvenli e-ticaret
+                deneyimi.
+            </p>
+
+            <p>
+                Teknoloji hayatını kolaylaştırır.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>Mağaza</h3>
+
+            <p>Bilgisayar</p>
+            <p>Telefon</p>
+            <p>Aksesuar</p>
+            <p>Gaming</p>
+
+        </div>
+
+        <div>
+
+            <h3>Destek</h3>
+
+            <p>Sık Sorulan Sorular</p>
+            <p>Kargo Takibi</p>
+            <p>İade Politikası</p>
+            <p>İletişim</p>
+
+        </div>
+
+        <div>
+
+            <h3>Bizi Takip Et</h3>
+
+            <p>Instagram</p>
+            <p>YouTube</p>
+            <p>X / Twitter</p>
+            <p>Facebook</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 NovaShop — Tüm hakları saklıdır.
+
+    </div>
+
+</footer>
+
+
+<!-- ================= CART ================= -->
+
+<div
+    class="overlay"
+    id="overlay"
+    onclick="closeCart()"
+></div>
+
+
+<aside
+    class="cart"
+    id="cart"
+>
+
+    <div class="cart-header">
+
+        <h2>🛒 Sepetim</h2>
+
+        <button
+            class="close"
+            onclick="closeCart()"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div
+        class="cart-items"
+        id="cartItems"
+    ></div>
+
+
+    <div class="cart-bottom">
+
+        <div class="coupon">
+
+            <input
+                id="coupon"
+                placeholder="NOVA10"
+            >
+
+            <button
+                onclick="applyCoupon()"
+            >
+                Uygula
+            </button>
+
+        </div>
+
+
+        <div
+            class="total"
+        >
+
+            <span>Toplam</span>
+
+            <span>
+                <span id="total">0</span> TL
+            </span>
+
+        </div>
+
+
+        <button
+            class="checkout"
+            onclick="checkout()"
+        >
+            💳 Güvenli Ödemeye Geç
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= MODAL ================= -->
+
+<div
+    class="modal"
+    id="modal"
+    onclick="closeModal(event)"
+>
+
+    <div
+        class="modal-box"
+        onclick="event.stopPropagation()"
+    >
+
+        <button
+            class="close"
+            onclick="closeModal()"
+            style="position:absolute;right:20px;top:15px;"
+        >
+            ×
+        </button>
+
+        <div
+            class="modal-image"
+            id="modalImage"
+        ></div>
+
+        <h2 id="modalName"></h2>
+
+        <p id="modalDescription"></p>
+
+        <div
+            class="modal-price"
+            id="modalPrice"
+        ></div>
+
+        <button
+            class="add"
+            id="modalAdd"
+        >
+            🛒 Sepete Ekle
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div
+    class="toast"
+    id="toast"
+>
+</div>
+
+
+<script>
+
+/* ================= PRODUCTS ================= */
+
+const products = [
+
+{
+    id:1,
+    name:"MacBook Air",
+    category:"computer",
+    price:45000,
+    oldPrice:50000,
+    image:"💻",
+    rating:4.9,
+    description:"İnce, hafif ve güçlü bir dizüstü bilgisayar."
+},
+
+{
+    id:2,
+    name:"iPhone Pro",
+    category:"phone",
+    price:60000,
+    oldPrice:65000,
+    image:"📱",
+    rating:4.8,
+    description:"Yeni nesil performansa sahip premium akıllı telefon."
+},
+
+{
+    id:3,
+    name:"AirPods Pro",
+    category:"audio",
+    price:8000,
+    oldPrice:9500,
+    image:"🎧",
+    rating:4.7,
+    description:"Aktif gürültü engelleme özellikli kablosuz kulaklık."
+},
+
+{
+    id:4,
+    name:"Apple Watch",
+    category:"watch",
+    price:15000,
+    oldPrice:18000,
+    image:"⌚",
+    rating:4.8,
+    description:"Akıllı saat, bildirimler ve günlük aktivite takibi."
+},
+
+{
+    id:5,
+    name:"Gaming Laptop",
+    category:"gaming",
+    price:75000,
+    oldPrice:85000,
+    image:"🖥️",
+    rating:4.9,
+    description:"Oyun ve profesyonel işler için yüksek performans."
+},
+
+{
+    id:6,
+    name:"Android Pro",
+    category:"phone",
+    price:25000,
+    oldPrice:29000,
+    image:"📲",
+    rating:4.6,
+    description:"Güçlü işlemci ve yüksek çözünürlüklü ekran."
+},
+
+{
+    id:7,
+    name:"Bluetooth Speaker",
+    category:"audio",
+    price:3500,
+    oldPrice:4200,
+    image:"🔊",
+    rating:4.5,
+    description:"Taşınabilir güçlü Bluetooth hoparlör."
+},
+
+{
+    id:8,
+    name:"Gaming Headset",
+    category:"gaming",
+    price:4500,
+    oldPrice:5500,
+    image:"🎮",
+    rating:4.7,
+    description:"Oyuncular için düşük gecikmeli kulaklık."
+},
+
+{
+    id:9,
+    name:"Smart Band",
+    category:"watch",
+    price:2500,
+    oldPrice:3200,
+    image:"⌚",
+    rating:4.4,
+    description:"Günlük aktivite ve uyku takibi."
+},
+
+{
+    id:10,
+    name:"Ultrabook",
+    category:"computer",
+    price:38000,
+    oldPrice:43000,
+    image:"💻",
+    rating:4.6,
+    description:"Günlük kullanım için hafif ve hızlı bilgisayar."
+},
+
+{
+    id:11,
+    name:"Wireless Earbuds",
+    category:"audio",
+    price:2200,
+    oldPrice:3000,
+    image:"🎧",
+    rating:4.3,
+    description:"Kompakt ve kaliteli kablosuz kulaklık."
+},
+
+{
+    id:12,
+    name:"Mechanical Keyboard",
+    category:"gaming",
+    price:3200,
+    oldPrice:3900,
+    image:"⌨️",
+    rating:4.8,
+    description:"Oyuncular ve yazılımcılar için mekanik klavye."
+}
+
+];
+
+
+/* ================= VARIABLES ================= */
+
+let cart = [];
+
+let currentProducts = [...products];
+
+let discount = 0;
+
+let selectedProduct = null;
+
+
+/* ================= DISPLAY ================= */
+
+function displayProducts(list){
+
+    const container =
+        document.getElementById("productList");
+
+    container.innerHTML = "";
+
+
+    if(list.length === 0){
+
+        container.innerHTML = `
+            <div style="
+                grid-column:1/-1;
+                text-align:center;
+                padding:60px;
+            ">
+                <h2>😕 Ürün bulunamadı</h2>
+                <p style="color:var(--muted);margin-top:10px;">
+                    Farklı bir arama yapmayı deneyin.
+                </p>
+            </div>
+        `;
+
+        return;
+    }
+
+
+    list.forEach(product => {
+
+        const card =
+            document.createElement("article");
+
+        card.className = "product";
+
+
+        card.innerHTML = `
+
+            <div
+                class="product-image"
+                onclick="openProduct(${product.id})"
+            >
+
+                <span class="product-badge">
+                    İNDİRİM
+                </span>
+
+                <button
+                    class="favorite"
+                    onclick="event.stopPropagation();toggleFavorite(this)"
+                >
+                    ♡
+                </button>
+
+                ${product.image}
+
+            </div>
+
+
+            <div class="product-info">
+
+                <h3>
+                    ${product.name}
+                </h3>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                    ${product.rating}
+                </div>
+
+
+                <div class="price-row">
+
+                    <div>
+
+                        <div class="price">
+                            ${product.price.toLocaleString("tr-TR")} TL
+                        </div>
+
+                        <div class="old-price">
+                            ${product.oldPrice.toLocaleString("tr-TR")} TL
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="add"
+                    onclick="addToCart(${product.id})"
+                >
+                    🛒 Sepete Ekle
+                </button>
+
+            </div>
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* ================= SEARCH ================= */
+
+function searchProducts(){
+
+    const query =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    currentProducts =
+        products.filter(product =>
+            product.name
+            .toLowerCase()
+            .includes(query)
+        );
+
+
+    displayProducts(currentProducts);
+
+}
+
+
+/* ================= CATEGORY ================= */
+
+function categoryFilter(category){
+
+    if(category === "all"){
+
+        currentProducts = [...products];
+
+    }else{
+
+        currentProducts =
+            products.filter(
+                product =>
+                    product.category === category
+            );
+
+    }
+
+
+    document
+        .getElementById("searchInput")
+        .value = "";
+
+
+    displayProducts(currentProducts);
+
+}
+
+
+/* ================= SORT ================= */
+
+function sortProducts(){
+
+    const value =
+        document
+        .getElementById("sortSelect")
+        .value;
+
+
+    let sorted = [...currentProducts];
+
+
+    if(value === "low"){
+
+        sorted.sort(
+            (a,b) => a.price - b.price
+        );
+
+    }
+
+
+    if(value === "high"){
+
+        sorted.sort(
+            (a,b) => b.price - a.price
+        );
+
+    }
+
+
+    if(value === "name"){
+
+        sorted.sort(
+            (a,b) =>
+                a.name.localeCompare(
+                    b.name,
+                    "tr"
+                )
+        );
+
+    }
+
+
+    displayProducts(sorted);
+
+}
+
+
+/* ================= CART ================= */
+
+function addToCart(id){
+
+    const product =
+        products.find(
+            product => product.id === id
+        );
+
+
+    const existing =
+        cart.find(
+            item => item.id === id
+        );
+
+
+    if(existing){
+
+        existing.quantity++;
+
+    }else{
+
+        cart.push({
+            ...product,
+            quantity:1
+        });
+
+    }
+
+
+    updateCart();
+
+    showToast(
+        `${product.name} sepete eklendi 🛒`
+    );
+
+}
+
+
+function updateCart(){
+
+    const container =
+        document.getElementById("cartItems");
+
+
+    container.innerHTML = "";
+
+
+    let total = 0;
+
+    let count = 0;
+
+
+    cart.forEach(item => {
+
+        total +=
+            item.price *
+            item.quantity;
+
+        count += item.quantity;
+
+
+        const div =
+            document.createElement("div");
+
+        div.className = "cart-item";
+
+
+        div.innerHTML = `
+
+            <div class="cart-icon">
+                ${item.image}
+            </div>
+
+            <div class="cart-info">
+
+                <h4>
+                    ${item.name}
+                </h4>
+
+                <div class="cart-price">
+                    ${item.price.toLocaleString("tr-TR")} TL
+                </div>
+
+                <div class="qty">
+
+                    <button
+                        onclick="changeQuantity(${item.id},-1)"
+                    >
+                        −
+                    </button>
+
+                    <span>
+                        ${item.quantity}
+                    </span>
+
+                    <button
+                        onclick="changeQuantity(${item.id},1)"
+                    >
+                        +
+                    </button>
+
+                    <button
+                        class="remove"
+                        onclick="removeCart(${item.id})"
+                    >
+                        🗑️
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(div);
+
+    });
+
+
+    let finalTotal = total;
+
+
+    if(discount > 0){
+
+        finalTotal =
+            total -
+            (total * discount / 100);
+
+    }
+
+
+    document
+        .getElementById("cartCount")
+        .textContent = count;
+
+
+    document
+        .getElementById("total")
+        .textContent =
+            finalTotal.toLocaleString("tr-TR");
+
+}
+
+
+function changeQuantity(id,amount){
+
+    const item =
+        cart.find(
+            product => product.id === id
+        );
+
+
+    if(!item) return;
+
+
+    item.quantity += amount;
+
+
+    if(item.quantity <= 0){
+
+        removeCart(id);
+
+        return;
+
+    }
+
+
+    updateCart();
+
+}
+
+
+function removeCart(id){
+
+    cart =
+        cart.filter(
+            item => item.id !== id
+        );
+
+
+    updateCart();
+
+    showToast("Ürün sepetten çıkarıldı.");
+
+}
+
+
+function openCart(){
+
+    document
+        .getElementById("cart")
+        .classList.add("open");
+
+
+    document
+        .getElementById("overlay")
+        .classList.add("show");
+
+}
+
+
+function closeCart(){
+
+    document
+        .getElementById("cart")
+        .classList.remove("open");
+
+
+    document
+        .getElementById("overlay")
+        .classList.remove("show");
+
+}
+
+
+/* ================= COUPON ================= */
+
+function applyCoupon(){
+
+    const code =
+        document
+        .getElementById("coupon")
+        .value
+        .trim()
+        .toUpperCase();
+
+
+    if(code === "NOVA10"){
+
+        discount = 10;
+
+        updateCart();
+
+        showToast(
+            "🎉 %10 indirim uygulandı!"
+        );
+
+    }else{
+
+        discount = 0;
+
+        updateCart();
+
+        showToast(
+            "❌ Kupon kodu geçersiz."
+        );
+
+    }
+
+}
+
+
+/* ================= MODAL ================= */
+
+function openProduct(id){
+
+    selectedProduct =
+        products.find(
+            product => product.id === id
+        );
+
+
+    document
+        .getElementById("modalImage")
+        .textContent =
+            selectedProduct.image;
+
+
+    document
+        .getElementById("modalName")
+        .textContent =
+            selectedProduct.name;
+
+
+    document
+        .getElementById("modalDescription")
+        .textContent =
+            selectedProduct.description;
+
+
+    document
+        .getElementById("modalPrice")
+        .textContent =
+            selectedProduct.price
+            .toLocaleString("tr-TR")
+            + " TL";
+
+
+    document
+        .getElementById("modalAdd")
+        .onclick = () => {
+
+            addToCart(
+                selectedProduct.id
+            );
+
+            closeModal();
+
+        };
+
+
+    document
+        .getElementById("modal")
+        .classList.add("show");
+
+}
+
+
+function closeModal(){
+
+    document
+        .getElementById("modal")
+        .classList.remove("show");
+
+}
+
+
+/* ================= FAVORITE ================= */
+
+function toggleFavorite(button){
+
+    button.classList.toggle("active");
+
+
+    button.textContent =
+        button.classList.contains("active")
+        ? "♥"
+        : "♡";
+
+
+    showToast(
+        button.classList.contains("active")
+        ? "❤️ Favorilere eklendi."
+        : "Favorilerden çıkarıldı."
+    );
+
+}
+
+
+/* ================= DARK MODE ================= */
+
+function toggleDark(){
+
+    document
+        .body
+        .classList
+        .toggle("dark");
+
+}
+
+
+/* ================= TOAST ================= */
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    },2500);
+
+}
+
+
+/* ================= CHECKOUT ================= */
+
+function checkout(){
+
+    if(cart.length === 0){
+
+        showToast(
+            "🛒 Sepetiniz boş."
+        );
+
+        return;
+
+    }
+
+
+    showToast(
+        "💳 Ödeme ekranı hazırlanıyor..."
+    );
+
+}
+
+
+/* ================= NEWSLETTER ================= */
+
+function subscribe(){
+
+    showToast(
+        "📧 Başarıyla abone oldunuz!"
+    );
+
+}
+
+
+/* ================= SCROLL ================= */
+
+function scrollProducts(){
+
+    document
+        .getElementById("products")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* ================= COUNTDOWN ================= */
+
+let seconds = 5 * 24 * 60 * 60
+            + 12 * 60 * 60
+            + 35 * 60
+            + 20;
+
+
+setInterval(() => {
+
+    if(seconds <= 0)
+        return;
+
+
+    seconds--;
+
+
+    const days =
+        Math.floor(
+            seconds / 86400
+        );
+
+
+    const hours =
+        Math.floor(
+            (seconds % 86400) / 3600
+        );
+
+
+    const minutes =
+        Math.floor(
+            (seconds % 3600) / 60
+        );
+
+
+    const secs =
+        seconds % 60;
+
+
+    document
+        .getElementById("days")
+        .textContent =
+            String(days).padStart(2,"0");
+
+
+    document
+        .getElementById("hours")
+        .textContent =
+            String(hours).padStart(2,"0");
+
+
+    document
+        .getElementById("minutes")
+        .textContent =
+            String(minutes).padStart(2,"0");
+
+
+    document
+        .getElementById("seconds")
+        .textContent =
+            String(secs).padStart(2,"0");
+
+},1000);
+
+
+/* ================= START ================= */
+
+displayProducts(products);
+
+</script>
+
+</body>
+</html>
+```
